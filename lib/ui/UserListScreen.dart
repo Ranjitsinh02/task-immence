@@ -46,7 +46,7 @@ class _UserListScreenState extends State<UserListScreen> {
                               margin: const EdgeInsets.only(left: 10, top: 5),
                               child: UserListTileWithAvatar(
                                 avatarText:
-                                    state.userModel[index].name.toString()[0],
+                                    state.userModel[index].name.toString()[0].toUpperCase(),
                                 title1: state.userModel[index].name.toString(),
                                 title2: state.userModel[index].email.toString(),
                               )));

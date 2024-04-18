@@ -17,7 +17,6 @@ class LoginBloc extends Bloc<LoginEvent, LoginState> {
         final bool userModel =
             await authService.loginUser(event.emailId, event.password);
 
-        print("UserModel:::${userModel}");
         if (userModel == true) {
           emit(LoginSuccessState(isUserAvailable: userModel));
         }

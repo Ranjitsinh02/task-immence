@@ -17,7 +17,7 @@ class AuthenticationBloc
     on<SignUpUser>((event, emit) async {
       emit(const AuthenticationLoadingState(isLoading: true));
       try {
-        final UserModel? userModel = await AuthService().signUpUser(
+        final bool response = await AuthService().signUpUser(
           event.name,
           event.emailId,
           event.phoneNumber,
@@ -25,10 +25,8 @@ class AuthenticationBloc
           event.isRemember,
         );
 
-        if (userModel != null) {
-          emit(AuthenticationSuccessState(userModel));
-        } else {
-          emit(const AuthenticationFailureState('Create user failed'));
+        if (response == true) {
+          emit(AuthenticationSuccessState());
         }
       } catch (e) {
         emit(AuthenticationFailureState(e.toString()));

@@ -15,11 +15,10 @@ class UserListBloc extends Bloc<UserListEvent, UserListState> {
       try {
         final response = await authService.fetchUsers();
         for (var element in response) {
-          print("Key::${element}");
           userDataList.add(element);
         }
         emit(UserListSuccessState(userModel: userDataList));
-        print("Controller ::::$userDataList");
+
       } catch (e) {
         print("error:::${e.toString()}");
       }

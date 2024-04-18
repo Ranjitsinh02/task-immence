@@ -26,7 +26,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
       child: Scaffold(
         body: BlocConsumer<ProfileBloc, ProfileState>(
           listener: (context, state) {
-            print("State:::$state");
+
             if (state is ProfileLogoutState) {
               Navigator.pushAndRemoveUntil(
                   context,

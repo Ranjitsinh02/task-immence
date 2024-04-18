@@ -43,6 +43,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
             child: SingleChildScrollView(
               child: Form(
                 key: formGlobalKey,
+                autovalidateMode: AutovalidateMode.onUserInteraction, // Change to .always to show errors immediately
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
@@ -117,8 +118,12 @@ class _SignUpScreenState extends State<SignUpScreen> {
                             color: AppColor.darkBlue,
                           );
                         } else if (state is AuthenticationSuccessState) {
-                          Navigator.pushNamedAndRemoveUntil(context,
-                              BottomNavigationBarWidget.id, (route) => false);
+                          Navigator.pushReplacement(
+                              context,
+                              MaterialPageRoute(
+                                builder: (context) =>
+                                    BottomNavigationBarWidget(),
+                              ));
                         } else if (state is AuthenticationFailureState) {
                           showDialog(
                               context: context,

@@ -59,6 +59,7 @@ class _LoginScreenState extends State<LoginScreen> {
             margin: const EdgeInsets.symmetric(horizontal: 18),
             child: Form(
               key: formGlobalKey,
+              autovalidateMode: AutovalidateMode.onUserInteraction,
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [

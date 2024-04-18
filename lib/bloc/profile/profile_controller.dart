@@ -14,7 +14,6 @@ class ProfileBloc extends Bloc<ProfileEvent, ProfileState> {
 
     on<ProfileLoadEvent>((event, emit) async {
       final userId = SharedPreferencesService.getData(AppStrings.userId);
-      print("UserId::${userId}");
       try {
         final response = await authService.fetchUsers();
 
@@ -25,7 +24,6 @@ class ProfileBloc extends Bloc<ProfileEvent, ProfileState> {
           }
         }
 
-        print("Response:::${response}");
       } catch (e) {
         print(e);
         emit(ProfileFailureState(errorMessage: e.toString()));

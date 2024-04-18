@@ -13,7 +13,7 @@ class AuthService {
         email: emailId,
         password: password,
       );
-      print("Response after login:::${response.user?.uid}");
+
       SharedPreferencesService.saveData(AppStrings.userId, response.user?.uid);
       DocumentSnapshot userSnapshot = await FirebaseFirestore.instance
           .collection('users')
@@ -30,7 +30,7 @@ class AuthService {
   }
 
   /// create user
-  Future<UserModel?> signUpUser(
+  Future<bool> signUpUser(
     String name,
     String email,
     String phoneNumber,
@@ -59,11 +59,13 @@ class AuthService {
           "isRemember": isRemember
           // Add other user data fields as needed
         });
+        return true;
       }
+
     } on FirebaseAuthException catch (e) {
       print(e.toString());
     }
-    return null;
+    return false;
   }
 
   Future<List<UserModel>> fetchUsers() async {
@@ -72,7 +74,7 @@ class AuthService {
           await FirebaseFirestore.instance.collection('users').get();
       List<UserModel> userList = [];
       querySnapshot.docs.forEach((doc) {
-        print("Data::::${doc.data()}");
+
         UserModel datamodel =
             UserModel.fromJson(doc.data() as Map<String, dynamic>);
         userList.add(datamodel);
@@ -86,16 +88,15 @@ class AuthService {
 
   Future<UserModel> fetchUserDetails() async {
     final userId = SharedPreferencesService.getData(AppStrings.userId);
-    print("UserId::${userId}");
+
     try {
       DocumentSnapshot userSnapshot = await FirebaseFirestore.instance
           .collection('users')
           .doc(userId)
           .get();
 
-      print("userSnapshot:::${userSnapshot}");
       UserModel userModel = UserModel.fromJson(userSnapshot as Map<String, dynamic>);
-      print("UserList::::${userModel}");
+
       return userModel;
     } catch (e) {
       print("Error fetching users: $e");
