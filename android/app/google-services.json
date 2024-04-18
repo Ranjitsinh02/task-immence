@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "721854977202",
+    "project_id": "practical-task-b396d",
+    "storage_bucket": "practical-task-b396d.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:721854977202:android:f6ab16cf47acca3e69e5ab",
+        "android_client_info": {
+          "package_name": "com.app.practical_task"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyB3zMB20xeeY00K_ZY0PpyJ3d2YWNYkD8U"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
