@@ -140,7 +140,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                                       emailController.text,
                                       phoneNumberController.text,
                                       passwordController.text,
-                                      checkBoxValue));
+                                      checkBoxValue,));
                             }
                           },
                         );
